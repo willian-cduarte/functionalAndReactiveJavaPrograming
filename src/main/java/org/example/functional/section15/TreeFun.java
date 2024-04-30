@@ -38,7 +38,7 @@ public class TreeFun<E extends Comparable<E>> {
 
     private TreeFun<E> insert(E newValue) {
         return isEmpty() ? new TreeFun<E>(NIL, newValue, NIL)
-                :newValue.compareTo(this.value) < 0 ? new TreeFun<E>(left.insert(newValue), this.value , this.right)
+                : newValue.compareTo(this.value) < 0 ? new TreeFun<E>(left.insert(newValue), this.value , this.right)
                 : newValue.compareTo(this.value) > 0 ? new TreeFun<E>(this.left, this.value, right.insert(newValue))
                 : new TreeFun<E>(this.left, newValue, this.right);
 
