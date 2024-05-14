@@ -1,16 +1,27 @@
 package org.example.reactive.section8;
 
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 
-import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
-public class Buffering {
+public class WindowOperator {
     public static void main(String[] args) throws InterruptedException {
 
+        // window
+        //Buffer into other observables rather than collections
+        //yelds observable of observables
+        //emits emissions immediatly as soom they become available
+        //Buffer em outros observáveis em vez de coleções
+        //produz observável de observáveis
+        //emite emissões imediatamente assim que ficam disponíveis
 
-        /*
+        //defining scope
+
+        //window(int count)
+        //window(long timespan)
+        //window(Observable boundaryIndicator)
+
+/*
         Observable.range(1, 30)
                 .buffer(4, HashSet::new)
                 .subscribe(System.out::println);
@@ -29,12 +40,11 @@ public class Buffering {
                 .subscribe(System.out::println);
         */
 
-        Thread.sleep(8000);
 
         Observable<Long> interval = Observable.interval(500, TimeUnit.MILLISECONDS);
         Observable.interval(1000, TimeUnit.MILLISECONDS)
-                .buffer(interval)
-                .subscribe(System.out::println);
+                .window(interval)
+                .subscribe(e -> System.out.println(e));
 
         Thread.sleep(8000);
 

@@ -13,12 +13,12 @@ public class Demo {
 
 
 
-        serialized.subscribe(System.out::println);
+        serialized.subscribe(e -> System.out.println("Observer 1 "+ e));
         serialized.subscribe(e -> System.out.println("Observer 2 "+ e));
 
         serialized.onNext("Hello");
         serialized.onNext("BasicsStrong");
         serialized.onComplete();
-        serialized.onNext("BasicsStrong");
+        serialized.onNext("BasicsStrong2");
     }
 }

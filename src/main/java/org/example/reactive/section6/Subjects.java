@@ -15,8 +15,8 @@ public class Subjects {
         Observable<Integer> src2 = Observable.just(50,100,150,200)
                 .subscribeOn(Schedulers.computation());
 
-        src1.subscribe(e -> System.out.println(e));
-        src2.subscribe(e -> System.out.println(e));
+      //  src1.subscribe(e -> System.out.println(e));
+       // src2.subscribe(e -> System.out.println(e));
 
         @NonNull
         Subject<Object> subject = PublishSubject.create();
@@ -28,7 +28,7 @@ public class Subjects {
         subject.onNext("BasicsStrong");
 
         subject.onComplete();
-        subject.subscribe(e -> System.out.println("The element is "+ e)); //Observer 2
+        //subject.subscribe(e -> System.out.println("The element is "+ e)); //Observer 2
 
         src1.subscribe(subject);   //source 1
         src2.subscribe(subject);	//source 2
